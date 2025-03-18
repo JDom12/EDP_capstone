@@ -12,5 +12,5 @@ data = [{"name": fake.name(), "location": fake.city(), "role": fake.job(), "sala
 data = pd.DataFrame(data)
 
 #creates csv file
-data.to_csv('sample_data', index=False)
+data.to_csv('sample_data.csv', index=False)
 
