@@ -1,5 +1,16 @@
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+
 function Login() {
 //login form here
+
+const navigate = useNavigate();
+
+const handleSubmit = (e) => {
+  e.preventDefault();
+
+  navigate('/search');
+};
 
 return (
     <>

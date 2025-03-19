@@ -1,10 +1,12 @@
 import pg from 'pg';
 import express from 'express';
 import dotenv from 'dotenv';
+import cors from cors
 
 const app = express()
 const PORT = 3000
 dotenv.config();
+app.use(cors());
 
 const { Pool } = pg;
 // PostgreSQL pool configuration
@@ -21,6 +23,22 @@ app.get("/", async (req,res) =>{
         const result = await pool.query('SELECT * FROM emp');
         res.status(200).json(result.rows);
         
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ message: 'Internal server error' });
+    }
+});
+
+// search by name
+app.get("/api/search", async (req, res) => {
+    const query = req.query.q;
+
+    try {
+        const result = await pool.query(
+            "SELECT id, name, phone, manager, role, location, salary, manager_id FROM emp WHERE LOWER(name) LIKE LOWER($1) LIMIT 10",
+            [`%${query}%`]
+        );
+        res.json(result.rows);
     } catch (err) {
         console.error(err);
         res.status(500).json({ message: 'Internal server error' });
