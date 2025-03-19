@@ -5,6 +5,7 @@ import Emp from './assets/Emp';
 import Search from './assets/Search';
 import { AuthProvider } from "./hooks/AuthContent";
 import ProtectedRoute from "./assets/RequireAuth";
+import SalaryPredictor from "./assets/SalaryPredictor";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route element={<ProtectedRoute />}>
             <Route path="/emp" element={<Emp />} />
             <Route path="/search" element={<Search />} />
+            <Route path="/predict-salary" element={<SalaryPredictor />} />
         </Route>
         </Routes>
     </Router>
