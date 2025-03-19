@@ -9,6 +9,7 @@ import ProtectedRoute from "./assets/RequireAuth";
 function App() {
   return (
   <AuthProvider>
+    <h1>Enterprise Directory</h1>
     <Router>
       <Routes>
         <Route path="/login" element={<Login />} />

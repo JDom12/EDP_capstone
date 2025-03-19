@@ -6,7 +6,7 @@ function Search() {
   const [input, setInput] = useState('');
   const [query, setQuery] = useState('');
   const [results, setResults] = useState([]);
-  const { user } = useAuth();
+  const { user } = useAuth()
 
   console.log("User ID:", user?.emp_id);
   console.log("Role:", user?.role);
@@ -42,11 +42,13 @@ function Search() {
             <div className="emp-list">
                 {results.map((emp) => (
                     <Emp 
-                        key={emp.id} 
+                        key={emp.id}
+                        emp_id={emp.id} 
                         name={emp.name} 
                         phone={emp.phone} 
                         role={emp.role} 
                         location={emp.location} 
+                        salary={emp.salary}
                     />
                 ))}
             </div>
