@@ -1,24 +1,24 @@
 import { useState } from 'react';
 
-function SearchBar() {
+function Search() {
+  const [input, setInput] = useState('');
   const [query, setQuery] = useState('');
   const [results, setResults] = useState([]);
 
-  const handleSearch = async (val) => {
-    const value = val.target.value;
-    setQuery(value);
-
-    if (value.trim() === '') {
+  const handleSearchClick = async () => {
+    if (input.trim() === '') {
       setResults([]);
       return;
     }
 
+    setQuery(input);
+
     try {
-      const response = await fetch(`/api/search?q=${value}`);
+      const response = await fetch(`http://localhost:3000/api/search/${input}`);
       const data = await response.json();
       setResults(data);
     } catch (error) {
-      console.error('Error fetching search results: ', error);
+      console.error('Error fetching search results:', error);
     }
   };
 
@@ -26,9 +26,11 @@ function SearchBar() {
     <div className="search-container">
       <input
         type="text"
-        value={query}
-        onChange={handleSearch}
+        placeholder="Search by name..."
+        value={input}
+        onChange={(e) => setInput(e.target.value)}
       />
+      <button onClick={handleSearchClick}>Search</button>
       {results.length > 0 && (
         <ul className="results">
           {results.map((emp) => (
@@ -42,4 +44,5 @@ function SearchBar() {
   );
 }
 
-export default SearchBar;
+export default Search;
+

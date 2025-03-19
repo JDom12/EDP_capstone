@@ -29,19 +29,21 @@ app.get("/", async (req,res) =>{
     }
 });
 
-// search by name
-app.get("/api/search", async (req, res) => {
-    const query = req.query.q;
-
+app.get("/api/search/:name", async (req, res) => {
     try {
+        const searchQuery = req.params.name;
+        console.log("Received search request for:", searchQuery);
+
         const result = await pool.query(
-            "SELECT id, name, phone, role, location, salary, manager_id FROM emp WHERE LOWER(name) LIKE LOWER($1) LIMIT 10",
-            [`%${query}%`]
+            "SELECT id, name, phone, manager_id, role, location, salary FROM emp WHERE LOWER(name) LIKE LOWER($1) LIMIT 10",
+            [`%${searchQuery}%`]
         );
+
+        console.log("Database result:", result.rows);
         res.json(result.rows);
     } catch (err) {
-        console.error(err);
-        res.status(500).json({ message: 'Internal server error' });
+        console.error("Database error:", err);
+        res.status(500).json({ message: "Internal server error" });
     }
 });
 
