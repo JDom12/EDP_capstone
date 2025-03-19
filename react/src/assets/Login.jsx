@@ -29,12 +29,13 @@ function Login() {
         console.log(id, pass);
 
         const url = `http://localhost:3000/api/search/id/${id}`
+        
         try {
             const res = await fetch(url); 
             const userData = await res.json(); 
             setUser(userData);
 
-            if (user == []) {
+            if (userData.length == 0) {
                 setErrMsg("Invalid login, please try again");
             }
             else {
