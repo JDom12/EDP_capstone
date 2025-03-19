@@ -1,6 +1,10 @@
+import { useAuth } from "../hooks/AuthContent";
+
 function Emp({ name, phone, role, location }) {
     const imgLink = `https://randomuser.me/api/portraits/men/93.jpg`;
-
+    const user = {
+        
+    }
     return (
         <div className="emp-container">
             <div>
