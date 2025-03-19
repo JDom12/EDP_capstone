@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-//import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function Login() {
     //login form here
-    //const navigate = useNavigate();
+    const navigate = useNavigate();
 
     const [id, setId] = useState('');
     const [pass, setPass] = useState('');
@@ -29,7 +29,7 @@ function Login() {
         console.log(id, pass);
 
         const url = `http://localhost:3000/api/search/id/${id}`
-        
+
         try {
             const res = await fetch(url); 
             const userData = await res.json(); 
@@ -40,7 +40,7 @@ function Login() {
             }
             else {
                 setErrMsg("Success");
-                //navigate('/search');
+                navigate('/search');
             }
         } catch (err) {
             console.err(err);
@@ -52,9 +52,9 @@ function Login() {
         <>
             <div>
                 <form>
-                    <label for="id">Employee ID </label>
+                    <label htmlFor="id">Employee ID </label>
                     <input type="text" id='id' value={id} onChange={handleIdChange} /><br />
-                    <label for="pass">Password </label>
+                    <label htmlFor="pass">Password </label>
                     <input type="text" id='pass' value={pass} onChange={handlePassChange} /><br />
                     <button type="button" onClick={handleSubmit}>Log In</button>
                 </form>
