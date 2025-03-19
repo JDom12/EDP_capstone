@@ -5,6 +5,7 @@ import cors from 'cors';
 
 const app = express()
 const PORT = 3000
+app.use(express.json());
 dotenv.config();
 app.use(cors());
 
@@ -62,6 +63,35 @@ app.get("/api/search/id/:id", async (req, res) => {
         res.status(500).json({ message: 'Internal server error' });
     }
 });
+
+app.post("/api/login", async (req, res) => {
+    const { emp_id, password } = req.body;
+
+    try {
+        const result = await pool.query(
+            "SELECT emp_id, role FROM login WHERE emp_id = $1 AND password = $2",
+            [emp_id, password]
+        );
+
+        if (result.rows.length > 0) {
+            const { emp_id, role } = result.rows[0];
+
+            const reportsQuery = await pool.query(
+                "SELECT id FROM emp WHERE manager_id = $1",
+                [emp_id]
+            );
+            const manages = reportsQuery.rows.map(row => row.id);
+
+            res.status(200).json({ emp_id, role, manages });
+        } else {
+            res.status(401).json({ message: "Authentication failed" });
+        }
+    } catch (err) {
+        console.error("Login error:", err);
+        res.status(500).json({ message: "Internal server error" });
+    }
+});
+
 
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
