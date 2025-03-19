@@ -3,9 +3,11 @@ import './App.css';
 import Login from './assets/Login';
 import Emp from './assets/Emp';
 import Search from './assets/Search';
+import { AuthProvider } from "./hooks/AuthContent";
 
 function App() {
   return (
+  <AuthProvider>
     <Router>
       <div>
         <h1>Enterprise Directory</h1>
@@ -16,6 +18,7 @@ function App() {
         </Routes>
       </div>
     </Router>
+    </AuthProvider>
   );
 }
 
