@@ -65,12 +65,12 @@ app.get("/api/search/id/:id", async (req, res) => {
 });
 
 app.post("/api/login", async (req, res) => {
-    const { username, password } = req.body;
+    const { emp_id, password } = req.body;
 
     try {
         const result = await pool.query(
-            "SELECT emp_id, role FROM login WHERE username = $1 AND password = $2",
-            [username, password]
+            "SELECT emp_id, role FROM login WHERE emp_id = $1 AND password = $2",
+            [emp_id, password]
         );
 
         if (result.rows.length > 0) {
