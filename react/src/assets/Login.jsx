@@ -10,6 +10,10 @@ function Login() {
     const [user, setUser] = useState();
     const [errMsg, setErrMsg] = useState();
 
+    useEffect(() => {
+        console.log("User Data:", user);
+    }, [user]);
+
     const handleIdChange = (e) => {
         setId(e.target.value);
         console.log(id);
@@ -26,8 +30,9 @@ function Login() {
 
         const url = `http://localhost:3000/api/search/id/${id}`
         try {
-            fetch(url).then(res => res.json()).then(user => setUser(user))
-            console.log(user)
+            const res = await fetch(url); 
+            const userData = await res.json(); 
+            setUser(userData);
 
             if (user == []) {
                 setErrMsg("Invalid login, please try again");
