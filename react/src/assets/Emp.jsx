@@ -1,7 +1,20 @@
 import { useAuth } from "../hooks/AuthContent";
 
 function Emp({ name, phone, role, location, salary, emp_id }) {
-    const imgLink = `https://randomuser.me/api/portraits/men/93.jpg`;
+    const gender = () => {
+        const coin = Math.random();
+        if (coin > 0.5){
+            return "men"
+        }
+
+        else{
+            return "women"
+        }
+    }
+
+    const num = () => Math.floor(Math.random() * 99 + 1);
+
+    const imgLink = `https://randomuser.me/api/portraits/${gender()}/${num()}.jpg`;
     const { user } = useAuth();
     
     const canViewSalary = 
