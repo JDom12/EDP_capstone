@@ -20,14 +20,14 @@ function NavBar() {
         <nav className="navBar">
             <ul className="navLinks">
                 <li>
-                    <button onClick={() => handleNavigation("/search")}>Search</button>
+                    <button onClick={() => handleNavigation("/search")}>SEARCH</button>
                 </li>
                 <li>
-                    <button onClick={() => handleNavigation("/predict-salary")}>Predict Salary</button>
+                    <button onClick={() => handleNavigation("/predict-salary")}>PREDICT SALARY</button>
                 </li>
                 {user && (
                     <li>
-                        <button onClick={logout}>Logout</button>
+                        <button onClick={logout} id="logout">LOGOUT</button>
                     </li>
                 )}
             </ul>

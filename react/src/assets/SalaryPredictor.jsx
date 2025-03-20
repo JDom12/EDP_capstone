@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import './SalaryPredictor.css';
 
 function SalaryPredictor() {
     const [jobRole, setJobRole] = useState("Analyst");
@@ -62,7 +63,7 @@ function SalaryPredictor() {
                     <option value="Los Angeles, CA">Los Angeles, CA</option>
                 </select>
                 </div>
-                <button onClick={handlePredictSalary}>Predict Salary</button>
+                <button onClick={handlePredictSalary}>PREDICT SALARY</button>
             </form>
 
             {error && <p className="error">{error}</p>}
