@@ -11,20 +11,23 @@ import NavBar from "./assets/NavBar";
 function App() {
 
   return (
-  <AuthProvider>
-    <Router>
-      <NavBar />
-      <Routes>
-        <Route path="/" element={<Navigate to="/login" />} />
-        <Route path="/login" element={<Login />} />
-        <Route element={<ProtectedRoute />}>
-          <Route path="/emp" element={<Emp />} />
-          <Route path="/search" element={<Search />} />
-          <Route path="/predict-salary" element={<SalaryPredictor />} />
-        </Route>
-        </Routes>
-    </Router>
-    </AuthProvider>
+    <>
+      <h1>Enterprise Directory</h1>
+      <AuthProvider>
+        <Router>
+          <NavBar />
+          <Routes>
+            <Route path="/" element={<Navigate to="/login" />} />
+            <Route path="/login" element={<Login />} />
+            <Route element={<ProtectedRoute />}>
+              <Route path="/emp" element={<Emp />} />
+              <Route path="/search" element={<Search />} />
+              <Route path="/predict-salary" element={<SalaryPredictor />} />
+            </Route>
+          </Routes>
+        </Router>
+      </AuthProvider>
+    </>
   );
 }
 
