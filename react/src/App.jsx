@@ -7,6 +7,7 @@ import { AuthProvider } from "./hooks/AuthContent";
 import ProtectedRoute from "./assets/RequireAuth";
 import SalaryPredictor from "./assets/SalaryPredictor";
 import "./navBar.css"
+import './App.scss';
 
 function App() {
 
