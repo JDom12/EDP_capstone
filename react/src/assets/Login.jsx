@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from "../hooks/AuthContent";
 
 function Login() {
-    //login form here
+    
     const navigate = useNavigate();
 
     const [id, setId] = useState('');
@@ -29,24 +29,11 @@ function Login() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         console.log(id, pass);
-
-        //const url = `http://localhost:3000/api/login/`
         
         try {
-            //const res = await fetch(url); 
-            //const userData = await res.json(); 
-            //setUser(userData);
             await login(id, pass)
             navigate("/search")
-            
-            /*
-            if (userData.length == 0) {
-                setErrMsg("Invalid login, please try again");
-            }
-            else {
-                setErrMsg("Success");
-                //navigate('/search');
-            }*/
+
         } catch (err) {
             console.error(err);
         }

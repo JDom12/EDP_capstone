@@ -38,20 +38,9 @@ function SalaryPredictor() {
     return (
         <div className="salary-predictor">
             <h2>Salary Prediction</h2>
-            {/* <input
-                type="text"
-                placeholder="Enter Job Role"
-                value={jobRole}
-                onChange={(e) => setJobRole(e.target.value)}
-            />
-            <input
-                type="text"
-                placeholder="Enter Location"
-                value={location}
-                onChange={(e) => setLocation(e.target.value)}
-            /> */}
 
             <form>
+                <label htmlFor="jobRole">Job Role</label>
                 <select name="jobRole" id="jobRole" value={jobRole} onChange={e => setJobRole(e.target.value)} required>
                     <option value="Manager">Manager</option>
                     <option value="Analyst">Analyst</option>
@@ -61,6 +50,7 @@ function SalaryPredictor() {
                     <option value="Security">Security</option>
                     <option value="Developer">Developer</option>
                 </select>
+                <label  htmlFor="location">Location</label>
                 <select name="location" id="location" value={location} onChange = {e => setLocation(e.target.value)} required>
                     <option value="Hartford, CT">Hartford, CT</option>
                     <option value="New York City, NY">New York City, NY</option>
