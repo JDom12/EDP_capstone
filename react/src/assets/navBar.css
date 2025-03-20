@@ -1,6 +1,7 @@
 .navBar {
     background-color: #333;
     padding: 10px;
+    justify-content: center;
   }
   
   .navLinks {
@@ -8,6 +9,7 @@
     display: flex;
     gap: 20px;
     align-items: center;
+    justify-content: center;
   }
   
   .navLinks li {
