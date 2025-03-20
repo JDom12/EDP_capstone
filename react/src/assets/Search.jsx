@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Emp from './Emp';
 import { useAuth } from "../hooks/AuthContent";
+import './Search.css'
 
 function Search() {
   const [input, setInput] = useState('');

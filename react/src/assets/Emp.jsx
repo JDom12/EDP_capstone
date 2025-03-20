@@ -1,5 +1,5 @@
 import { useAuth } from "../hooks/AuthContent";
-
+import './Emp.css'
 function Emp({ name, phone, role, location, salary, emp_id }) {
     const gender = () => {
         const coin = Math.random();
