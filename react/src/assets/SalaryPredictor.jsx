@@ -40,6 +40,7 @@ function SalaryPredictor() {
             <h2>Salary Prediction</h2>
 
             <form>
+                <div>
                 <label htmlFor="jobRole">Job Role</label>
                 <select name="jobRole" id="jobRole" value={jobRole} onChange={e => setJobRole(e.target.value)} required>
                     <option value="Manager">Manager</option>
@@ -50,6 +51,8 @@ function SalaryPredictor() {
                     <option value="Security">Security</option>
                     <option value="Developer">Developer</option>
                 </select>
+                </div>
+                <div>
                 <label  htmlFor="location">Location</label>
                 <select name="location" id="location" value={location} onChange = {e => setLocation(e.target.value)} required>
                     <option value="Hartford, CT">Hartford, CT</option>
@@ -58,6 +61,7 @@ function SalaryPredictor() {
                     <option value="Boston, MA">Boston, MA</option>
                     <option value="Los Angeles, CA">Los Angeles, CA</option>
                 </select>
+                </div>
                 <button onClick={handlePredictSalary}>Predict Salary</button>
             </form>
 
