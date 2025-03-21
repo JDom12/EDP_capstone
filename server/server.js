@@ -36,7 +36,7 @@ app.get("/api/search/:name", async (req, res) => {
         console.log("Received search request for:", searchQuery);
 
         const result = await pool.query(
-            "SELECT id, name, phone, manager_id, role, location, salary FROM emp WHERE LOWER(name) LIKE LOWER($1) LIMIT 10",
+            "SELECT id, name, phone, manager_id, role, location, salary FROM emp WHERE LOWER(name) LIKE LOWER($1)",
             [`%${searchQuery}%`]
         );
 
