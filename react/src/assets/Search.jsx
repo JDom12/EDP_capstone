@@ -8,6 +8,7 @@ function Search() {
   const [query, setQuery] = useState('');
   const [results, setResults] = useState([]);
   const { user } = useAuth()
+  
 
   console.log("User ID:", user?.emp_id);
   console.log("Role:", user?.role);
@@ -22,7 +23,7 @@ function Search() {
     setQuery(input);
 
     try {
-      const response = await fetch(`http://localhost:3000/api/search/${input}`);
+      const response = await fetch(`http://54.184.251.178:3000/api/search/${input}`);
       const data = await response.json();
       setResults(data);
     } catch (error) {

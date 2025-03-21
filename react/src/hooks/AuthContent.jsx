@@ -20,7 +20,7 @@ export const AuthProvider = ({ children }) => {
     // call backend API
     const login = async (emp_id, password) => {
         try {
-            const response = await fetch("http://localhost:3000/api/login", {
+            const response = await fetch("http://54.184.251.178:3000/api/login", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ emp_id, password }),

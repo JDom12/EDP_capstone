@@ -18,7 +18,7 @@ function SalaryPredictor() {
         }
 
         try {
-            const response = await fetch("http://localhost:5000/api", {
+            const response = await fetch("http://54.184.251.178:5000/api", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
