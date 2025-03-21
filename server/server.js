@@ -9,6 +9,12 @@ app.use(express.json());
 dotenv.config();
 app.use(cors());
 
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 const { Pool } = pg;
 // PostgreSQL pool configuration
 const pool = new Pool({
@@ -92,6 +98,11 @@ app.post("/api/login", async (req, res) => {
     }
 });
 
+app.use(express.static(path.join(__dirname, '../react/dist')));
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../react/dist/index.html'));
+});
 
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
