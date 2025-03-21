@@ -38,7 +38,8 @@ function SalaryPredictor() {
 
     return (
         <div className="salary-predictor">
-            <h2>Salary Prediction</h2>
+            <h2>Salary Prediction Tool</h2>
+            <h5>Use the dropdown to select a job role and location you'd like to predict the salary for.</h5>
 
             <form>
                 <div>

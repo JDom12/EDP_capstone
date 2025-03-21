@@ -37,12 +37,14 @@ function Login() {
 
         } catch (err) {
             console.error(err);
+            setErrMsg("Invalid login credentials, please try again.")
         }
 
     };
 
     return (
         <>
+            <h2>Login to Access the Enterprise Directory</h2>
             <div>
                 <form>
                     <label htmlFor="id">Employee ID </label>

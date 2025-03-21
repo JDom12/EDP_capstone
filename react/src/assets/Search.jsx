@@ -31,6 +31,8 @@ function Search() {
   };
 
   return (
+    <>
+    <h2>Search the Enterprise Directory</h2>
     <div className="search-container">
       <input
         type="text"
@@ -55,6 +57,7 @@ function Search() {
             </div>
         )}
     </div>
+    </>
   );
 }
 
